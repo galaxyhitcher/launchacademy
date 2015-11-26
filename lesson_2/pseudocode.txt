@@ -1,0 +1,52 @@
+1.) a method that returns the sum of two integers
+
+Given two integers as arguments
+
+Return the sum of these arguments.
+
+START
+
+GIVEN an integer a, an integer b
+
+RETURN a + b
+
+2.) a method that takes an array of strings, and returns a string that is all those strings concatenated together
+
+loop through a given array of strings, adding each string to a result string, then return that result string
+
+START
+
+GIVEN an array of strings string_array
+
+SET final_string = the first string in the array
+
+SET index = 0
+
+WHILE index < the length of the array
+  
+  append the string at that index in the input array to final_string
+
+RETURN final_string
+
+3.) a method that takes an array of integers and returns a new array with every other element
+
+Loop through an array of integers, keeping track of the index.
+If the index is divisible by two, add the element to a final array.
+Return the final array.
+
+START
+
+GIVEN an array of integers array_of_ints
+
+SET i = 0
+
+SET result_array = an empty array
+
+WHILE i < length of array_of_ints
+
+  IF i is even, add the element of array_of_ints at that index to result_array
+
+RETURN result_array
+  
+
+
