@@ -40,7 +40,7 @@ GIVEN an array of integers array_of_ints
 
 SET i = 0
 
-SET result_array = an empty array
+SET result_array = []
 
 WHILE i < length of array_of_ints
 
