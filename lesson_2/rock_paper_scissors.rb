@@ -14,7 +14,7 @@ def win?(first, second)
     (first == 'paper' && second == 'spock') ||
     (first == 'spock' && second == 'scissors') ||
     (first == 'lizard' && second == 'paper') ||
-    (first == 'scissors' && second == 'lizard') 
+    (first == 'scissors' && second == 'lizard')
 end
 
 def display_result(player, computer)
@@ -71,23 +71,23 @@ loop do
 
   display_result(choice, computer_choice)
 
-  if(user_points == 1 && computer_points == 1)
+  if user_points == 1 && computer_points == 1
     prompt("You have #{user_points} point, and the computer has #{computer_points} point.")
-  elsif(user_points == 1)
+  elsif user_points == 1
     prompt("You have #{user_points} point, and the computer has #{computer_points} points.")
-  elsif(computer_points == 1)
+  elsif computer_points == 1
     prompt("You have #{user_points} points, and the computer has #{computer_points} point.")
   else
     prompt("You have #{user_points} points, and the computer has #{computer_points} points.")
   end
 
-  if(user_points >= 5)
+  if (user_points >= 5)
     prompt("You won the WHOLE game!")
     break
-  elsif(computer_points >= 5)
+  elsif (computer_points >= 5)
     prompt("The computer won the WHOLE game.")
   end
-  
+
   prompt("Do you want to play again?")
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
