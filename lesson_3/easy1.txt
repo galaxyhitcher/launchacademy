@@ -1,0 +1,48 @@
+Q1.)
+
+numbers = [1, 2, 2, 3]
+numbers.uniq
+
+puts numbers
+
+=> [1, 2, 3]
+
+Q2.) '!' can either negate the truth value if it is placed before something, or can indicate that a method mutates the caller.  '?' can be used in a one line ternary statement.  For example, true ? 'is true' : 'is false' will return 'is true'.  '?' can indicate that a method returns a boolean value.
+
+1.) != is a method that returns true is the caller 'does not equal' the argument.  This can be used in a while statement.
+
+2.) !true (returns false)
+
+3.) a = [1,2,3,4,5]
+    a.map! {|n| 2n}
+    puts a => [2,4,6,8,10]
+
+4.) true ? 'is true' : 'is false'
+
+5.) win? could be a method name which returns true if a player has won a given game.
+
+6.) !!nil (returns false)
+
+Q3.) advice.gsub!("important","urgent")
+
+Q4.) numbers = [1, 2, 3, 4, 5]
+     numbers.delete_at(1) (returns 2, and deletes numbers[1] from numbers)
+     numbers.delete(1) (returns 1, and deletes 1 from the beginning of the numbers array)
+
+Q5.) (10..100).include?(42) (returns true)
+
+Q6.) famous_words = "seven years ago..."
+     famous_words = "Four score and " + famous_words
+     famous_words.prepend("Four score and ")
+
+Q7.) 42
+
+Q8.) flinstones.flatten!
+
+Q9.) flintstones.assoc("Barney")
+
+Q10.) flintstones_hash = {}
+      flintstones.each_with_index do |e, i|
+        flintstones_hash[e] = i
+      end
+      

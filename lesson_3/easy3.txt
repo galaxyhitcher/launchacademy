@@ -1,0 +1,15 @@
+Q1.) flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
+
+Q2.) flintstones << "Dino"
+
+Q3.) flintstones.push("Dino").push("Hoppy")
+
+Q4.) advice.slice!(0, advice.index('house'))
+     (this returns: "Few things in life are as important as ")
+     if you use:
+     advice.slice!(0, advice.index('house'))
+     advice is now: "house training your pet dinosaur."
+
+Q5.) statement.scan('t').count
+
+Q6.) title.center(40)

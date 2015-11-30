@@ -1,0 +1,17 @@
+Q1.) 10.times { |i| puts " " * i + str }
+
+Q2.) statement = "The Flintstones Rock"
+     freq = {}
+     statement.split('').each do |e|
+      if freq[e]
+        freq[e] += 1
+      else
+        freq[e] = 1
+      end
+     end
+
+Q3.) puts "the value of 40 + 2 is " (40 + 2).to_s
+     puts "the value of 40 + 2 is #{40 + 2}"
+
+Q4.) the first code snippet will puts 1, puts 3, and then return [3, 4]
+     the second code snippet will puts 1, puts 3, and then output [1, 2]
