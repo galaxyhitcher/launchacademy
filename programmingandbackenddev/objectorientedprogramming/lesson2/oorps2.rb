@@ -1,6 +1,6 @@
+require 'pry'
 class Player
   attr_accessor :move, :name
-  
   def initialize
     set_name
   end
@@ -13,7 +13,7 @@ class Human < Player
       puts "What's your name?"
       n = gets.chomp
       break unless n.empty?
-      puts "Sorry, must enter a value."
+      puts 'Sorry, must enter a value.'
     end
     self.name = n
   end
@@ -21,10 +21,10 @@ class Human < Player
   def choose
     choice = nil
     loop do
-      puts "Please choose rock, paper, or scissors."
+      puts 'Please choose rock, paper, or scissors.'
       choice = gets.chomp
       break if Move::VALUES.include? choice
-      puts "Sorry, invalid choice."
+      puts 'Sorry, invalid choice.'
     end
     self.move = Move.new(choice)
   end
@@ -41,10 +41,9 @@ class Computer < Player
 end
 
 class Move
-  VALUES = ['rock', 'paper', 'scissors']
+  VALUES = %w(rock paper scissors)
 
   def initialize(value)
-    raise ArgumentError.new if !VALUES.include?(value)
     @value = value
   end
 
@@ -53,7 +52,7 @@ class Move
   end
 
   def rock?
-    @value == 'rock?'
+    @value == 'rock'
   end
 
   def paper?
@@ -61,45 +60,20 @@ class Move
   end
 
   def >(other_move)
-    if rock?
-      return true if other_move.scissors?
-      return false
-    elsif paper?
-      return true if other_move.rock?
-      return false
-    elsif scissors?
-      return true if other_move.paper?
-      return false
-    end
+    rock? && other_move.scissors? ||
+      paper? && other_move.rock? ||
+      scissors? && other_move.paper?
   end
 
   def <(other_move)
-    if rock?
-      return true if other_move.paper?
-      return false
-    elsif paper?
-      return true if other_move.scissors?
-      return false
-    elsif scissors?
-      return true if other_move.rock?
-      return false
-    end
+    rock? && other_move.paper? ||
+      paper? && other_move.scissors? ||
+      scissors? && other_move.rock?
   end
 
   def to_s
     @value
   end
-end
-
-class Rule
-  def initialize
-    # not sure what the "state" of a rule object should be
-  end
-end
-
-# not sure where "compare" goes yet
-def compare(move1, move2)
-
 end
 
 class RPSGame
@@ -110,21 +84,19 @@ class RPSGame
   end
 
   def display_welcome_message
-    puts "Welcome to Rock, Paper, Scissors!"
+    puts 'Welcome to Rock, Paper, Scissors!'
   end
 
   def display_goodbye_message
-    puts "Thanks for playing Rock, Paper, Scissors. Good bye!"
+    puts 'Thanks for playing Rock, Paper, Scissors. Good bye!'
   end
 
-  def display_winner
-    puts "Thanks for playing Rock, Paper, Scissors. Good bye!"
-  end
-
-  def display_winner
+  def display_moves
     puts "#{human.name} chose #{human.move}"
     puts "#{computer.name} chose #{computer.move}"
-
+  end
+  
+  def display_winner
     if human.move > computer.move
       puts "#{human.name} won!"
     elsif human.move < computer.move
@@ -137,15 +109,14 @@ class RPSGame
   def play_again?
     answer = nil
     loop do
-      puts "Would you like to play again?"
+      puts 'Would you like to play again?'
       answer = gets.chomp
-      break if ['y', 'n'].include? answer.downcase
-      puts "Sorry, must by y or n."
+      break if %w(y n).include? answer.downcase
+      puts 'Sorry, must by y or n.'
     end
 
     return true if answer == 'y'
-    return false
-
+    false
   end
 
   def play
@@ -154,6 +125,7 @@ class RPSGame
     loop do
       human.choose
       computer.choose
+      display_moves
       display_winner
       break unless play_again?
     end
