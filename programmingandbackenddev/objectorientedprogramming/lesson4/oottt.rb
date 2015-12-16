@@ -88,21 +88,21 @@ end
 
 class Player
   attr_reader :marker
-  attr_accessor :score
+  attr_accessor :score, :name
 
   def initialize(marker)
     @marker = marker
     @score = 0
+    @name == ''
   end
 end
 
 class TTTGame
   HUMAN_MARKER = 'X'
   COMPUTER_MARKER = 'O'
+  GOES_FIRST = COMPUTER_MARKER
 
-  FIRST_TO_MOVE = HUMAN_MARKER
-
-  attr_reader :board, :human, :computer
+  attr_accessor :board, :human, :computer
 
   def play
     display_welcome_message
@@ -129,11 +129,35 @@ class TTTGame
 
   private
 
+  def pick_marker
+    puts "What's your marker?"
+    gets.chomp
+  end
+
   def initialize
     @board = Board.new
-    @human = Player.new(HUMAN_MARKER)
+    @human = Player.new(pick_marker)
     @computer = Player.new(COMPUTER_MARKER)
-    @current_marker = FIRST_TO_MOVE
+    puts "What is the human's name?"
+    @human.name = gets.chomp
+    puts "What is the computer's name?"
+    @computer.name = gets.chomp
+
+    @first_to_move = ''
+    if GOES_FIRST == 'choose'
+      puts "Would you like to go first? (y n)"
+      choice = gets.chomp
+      if choice.downcase.include?('y')
+        @first_to_move = HUMAN_MARKER
+      else
+        @first_to_move = COMPUTER_MARKER
+      end
+    elsif GOES_FIRST == COMPUTER_MARKER
+      @first_to_move = COMPUTER_MARKER
+    else
+      @first_to_move = HUMAN_MARKER
+    end
+    @current_marker = @first_to_move
   end
 
   def update_scores
@@ -254,8 +278,8 @@ class TTTGame
   end
 
   def display_scores
-    puts "You have:     #{human.score} points"
-    puts "Computer has: #{computer.score} points"
+    puts "#{human.name} has: #{human.score} points"
+    puts "#{computer.name} has: #{computer.score} points"
   end
 
   def display_result
@@ -263,9 +287,9 @@ class TTTGame
 
     case board.winning_marker
     when human.marker
-      puts 'You won!'
+      puts "#{human.name} won!"
     when computer.marker
-      puts 'Computer won!'
+      puts "#{computer.name} won."
     else
       puts "It's a tie!"
     end
@@ -289,7 +313,7 @@ class TTTGame
 
   def reset
     board.reset
-    @current_marker = FIRST_TO_MOVE
+    @current_marker = @first_to_move
     clear
   end
 
