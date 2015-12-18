@@ -28,8 +28,8 @@ class Player
     total = 0
     ace_count = 0
     @hand.each do |card|
-      total += card.value if card.value != "Ace"
-      ace_count += 1 if card.value == "Ace"
+      total += card.value if card.value != 'Ace'
+      ace_count += 1 if card.value == 'Ace'
     end
 
     ace_count.times { total += 11 }
@@ -42,7 +42,6 @@ class Player
   end
 end
 
-
 class Deck
   attr_accessor :stack
   def initialize
@@ -53,7 +52,7 @@ class Deck
     values = %w(2 3 4 5 6 7 8 9 10 Jack Queen King Ace)
     suits.each do |suit|
       values.each do |value|
-        @stack << Card.new(suit,value)
+        @stack << Card.new(suit, value)
       end
     end
     @stack.shuffle!
@@ -67,7 +66,7 @@ end
 
 class Card
   attr_reader :suit, :rank, :value
-  def initialize(suit,rank)
+  def initialize(suit, rank)
     @suit = suit
     @rank = rank
   end
@@ -75,8 +74,8 @@ class Card
   def value
     if @rank.to_i != 0
       @rank.to_i
-    elsif @rank == "Ace"
-      "Ace"
+    elsif @rank == 'Ace'
+      'Ace'
     else
       10
     end
@@ -98,7 +97,7 @@ class Game
     deal_cards
     show_cards
     player_turn if @player.still_playing
-    dealer_turn if !@player.busted?
+    dealer_turn unless @player.busted?
     show_result
   end
 
@@ -111,17 +110,17 @@ class Game
   end
 
   def show_cards
-    puts "-------------------------------"
-    puts "Player has:"
-    @player.hand.each { |card| card.to_s }
-    puts "Dealer has:"
-    @dealer.hand.each { |card| card.to_s }
-    puts "-------------------------------"
+    puts '-------------------------------'
+    puts 'Player has:'
+    @player.hand.each(&:to_s)
+    puts 'Dealer has:'
+    @dealer.hand.each(&:to_s)
+    puts '-------------------------------'
   end
 
   def player_turn
     while !@player.busted? && @player.still_playing && !@player.blackjack? && !@dealer.blackjack?
-      puts "Hit or stay?"
+      puts 'Hit or stay?'
       choice = gets.chomp
       if choice.downcase == 'hit'
         @player.hit(@bicycle)
@@ -146,17 +145,17 @@ class Game
     puts "Player has: #{@player.total}"
     puts "Dealer has: #{@dealer.total}"
     if @dealer.blackjack? && @player.blackjack?
-      puts "Both you and the dealer have blackjack, but the dealer wins."
+      puts 'Both you and the dealer have blackjack, but the dealer wins.'
     elsif @dealer.blackjack?
-      puts "Dealer has blackjack, dealer wins."
+      puts 'Dealer has blackjack, dealer wins.'
     elsif @player.blackjack?
-      puts "Player has blackjack, player wins!"
+      puts 'Player has blackjack, player wins!'
     elsif @dealer.busted?
-      puts "Player wins, dealer busted!"
+      puts 'Player wins, dealer busted!'
     elsif @player.total > @dealer.total && !@player.busted?
-      puts "Player wins!"
+      puts 'Player wins!'
     else
-      puts "Dealer wins..."
+      puts 'Dealer wins...'
     end
   end
 end
