@@ -14,3 +14,7 @@ end
 get "/" do
   "Getting Started."
 end
+
+get "/test" do
+  erb :index
+end
