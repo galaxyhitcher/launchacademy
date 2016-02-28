@@ -1,4 +1,9 @@
 Getting Started
 1.) create a basic sinatra app in a file called cms.rb and add boilerplate code for a basic sinatra app with sessions enabled
 2.) add a get path to "/"
-3.) add a gemfile and bundle install
+3.) add a gemfile and bundle install required gems
+
+Adding an Index Page
+1.) add a cms filesystem called "data" containing "about.txt", "history.txt", and "changes.txt"
+2.) create a file for the index page called index.erb
+3.) add code which will render the contents of "filesystem" inside index.erb
