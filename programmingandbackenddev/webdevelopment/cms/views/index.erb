@@ -1,5 +1,5 @@
 <% Dir.entries("./data").each do |filename| %>
   <% if File.extname(filename) == ".txt" %>
-    <li><%= filename %></li>
+    <li><a href="/<%= filename %>"><%= filename %></a></li>
   <% end %>
 <% end %>

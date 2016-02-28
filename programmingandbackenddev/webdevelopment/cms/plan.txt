@@ -7,3 +7,7 @@ Adding an Index Page
 1.) add a cms filesystem called "data" containing "about.txt", "history.txt", and "changes.txt"
 2.) create a file for the index page called views/index.erb
 3.) add code which will render the contents of "data" inside index.erb
+
+Viewing Text Files
+1.) add content to the files contained in the "data" folder
+2.) make each <li> on index.erb a link to a page which will display the contents of that file

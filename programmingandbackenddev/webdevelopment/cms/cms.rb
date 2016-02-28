@@ -12,9 +12,9 @@ configure do
 end
 
 get "/" do
-  "Getting Started."
+  erb :index
 end
 
-get "/test" do
-  erb :index
+get "/:filename" do
+  erb :show_file
 end
