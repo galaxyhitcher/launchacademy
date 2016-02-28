@@ -1,0 +1,9 @@
+source "https://rubygems.org"
+
+gem "sinatra", "~>1.4.6"
+gem "sinatra-contrib"
+
+# Gemfile
+group :production do
+  gem "puma"
+end

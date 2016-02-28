@@ -10,3 +10,7 @@ configure do
   set :session_secret, 'secret'
   set :erb, :escape_html => true
 end
+
+get "/" do
+  "Getting Started."
+end
