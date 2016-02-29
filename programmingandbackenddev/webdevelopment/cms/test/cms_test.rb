@@ -24,6 +24,6 @@ class CmsTest < Minitest::Test
   def test_changes
     get "/changes.txt"
     assert_equal 200, last_response.status
-    # assert last_response.body.include?('something')
+    assert last_response.body.include?('something')
   end
 end

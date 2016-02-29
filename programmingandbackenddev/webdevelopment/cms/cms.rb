@@ -1,9 +1,11 @@
+# cms.rb
 require "sinatra"
 require "sinatra/reloader"
-require "sinatra/content_for"
 require "tilt/erubis"
-require "sinatra/reloader" if development?
 require "pry"
+
+
+root = File.expand_path("..", __FILE__)
 
 configure do
   enable :sessions
@@ -11,13 +13,25 @@ configure do
   set :erb, :escape_html => true
 end
 
+before do
+  @files = Dir.glob(root + "/data/*").map do |path|
+    File.basename(path)
+  end
+end
+
 get "/" do
   erb :index
 end
 
 get "/:filename" do
-  file_path = "../data/" + params[:filename]
+  filename = params[:filename]
+  file_path = root + "/data/" + filename
 
-  headers["Content-Type"] = "text/plain"
-  File.read(file_path)
+  if @files.include?(filename)
+    headers["Content-Type"] = "text/plain"
+    File.read(file_path)
+  else
+    session[:error] = "#{filename} does not exist"
+    redirect "/"
+  end
 end

@@ -17,3 +17,8 @@ Adding Tests
 2.) create test/cms_test.rb and add setup code
 3.) create a test that performs a get request to "/", validates that the response is successful, and validates that the response contains the names of the three text files
 4.) create a test that performs a get request to '/changes.txt' and contains the text 'something'
+
+Handle Requests for Nonexistent Documents
+1.) Check to see if a file exists before attempting to read in its content.
+2.) If a document doesn't exist, store an error message in the session and redirect the user.
+3.) In the index template, if there is error message, print it out and delete it.

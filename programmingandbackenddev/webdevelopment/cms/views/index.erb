@@ -1,5 +1,7 @@
-<% Dir.entries("../data").each do |filename| %>
-  <% if File.extname(filename) == ".txt" %>
-    <li><a href="/<%= filename %>"><%= filename %></a></li>
+<!-- views/index.erb -->
+<h2><%= session.delete(:error) %></h2>
+<ul>
+  <% @files.each do |file| %>
+    <li><a href="/<%= file %>"><%= file %></a></li>
   <% end %>
-<% end %>
+</ul>
