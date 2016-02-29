@@ -14,6 +14,6 @@ Viewing Text Files
 
 Adding Tests
 1.) add minitest to the Gemfile
-2.) create cms_test.rb and add setup code
+2.) create test/cms_test.rb and add setup code
 3.) create a test that performs a get request to "/", validates that the response is successful, and validates that the response contains the names of the three text files
 4.) create a test that performs a get request to '/changes.txt' and contains the text 'something'
