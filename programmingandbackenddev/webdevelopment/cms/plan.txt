@@ -11,3 +11,9 @@ Adding an Index Page
 Viewing Text Files
 1.) add content to the files contained in the "data" folder
 2.) make each <li> on index.erb a link to a page which will display the contents of that file
+
+Adding Tests
+1.) add minitest to the Gemfile
+2.) create cms_test.rb and add setup code
+3.) create a test that performs a get request to "/", validates that the response is successful, and validates that the response contains the names of the three text files
+4.) create a test that performs a get request to '/changes.txt' and contains the text 'something'
