@@ -16,5 +16,8 @@ get "/" do
 end
 
 get "/:filename" do
-  erb :show_file
+  file_path = "./data/" + params[:filename]
+
+  headers["Content-Type"] = "text/plain"
+  File.read(file_path)
 end

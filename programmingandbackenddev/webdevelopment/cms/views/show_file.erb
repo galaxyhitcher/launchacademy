@@ -1,3 +1,4 @@
+
 <% File.open("./data/#{params[:filename]}").readlines.each do |line| %>
-  <br><%= line %></br>
+  <%= line %>
 <% end %>
