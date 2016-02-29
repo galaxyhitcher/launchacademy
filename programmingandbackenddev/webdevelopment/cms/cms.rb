@@ -16,7 +16,7 @@ get "/" do
 end
 
 get "/:filename" do
-  file_path = "./data/" + params[:filename]
+  file_path = "../data/" + params[:filename]
 
   headers["Content-Type"] = "text/plain"
   File.read(file_path)
