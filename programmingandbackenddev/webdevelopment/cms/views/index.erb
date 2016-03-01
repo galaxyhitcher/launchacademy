@@ -1,5 +1,6 @@
 <!-- views/index.erb -->
 <h2><%= session.delete(:error) %></h2>
+<h2><%= session.delete(:message) %></h2>
 <ul>
   <% @files.each do |file| %>
     <li><a href="/<%= file %>"><%= file %></a> <a href="/<%= file %>/edit">edit</a></li>
