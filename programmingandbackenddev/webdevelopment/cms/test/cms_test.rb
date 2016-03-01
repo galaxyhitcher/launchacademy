@@ -26,4 +26,13 @@ class CmsTest < Minitest::Test
     assert_equal 200, last_response.status
     assert last_response.body.include?('something')
   end
+
+  def test_document_not_found
+    get "/notafile.ext"
+    assert_equal 302, last_response.status
+    get last_response["Location"]
+
+    assert_equal 200, last_response.status
+    assert_includes last_response.body, "notafile.ext does not exist"
+  end
 end

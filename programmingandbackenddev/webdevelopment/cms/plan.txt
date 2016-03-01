@@ -22,3 +22,8 @@ Handle Requests for Nonexistent Documents
 1.) Check to see if a file exists before attempting to read in its content.
 2.) If a document doesn't exist, store an error message in the session and redirect the user.
 3.) In the index template, if there is error message, print it out and delete it.
+
+Viewing Markdown Files
+1.) Rename about.txt to about.md Add some Markdown-formatted text to this file.
+2.) Create a helper method called render_markdown that takes a single argument, the text to be processed, and returns rendered HTML.
+3.) When a user is viewing a file with the extension md, render the file's content using RedCarpet and return the result as the response's body.
