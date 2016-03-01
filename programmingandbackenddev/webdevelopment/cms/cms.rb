@@ -15,10 +15,16 @@ configure do
 end
 
 before do
-  @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
 
   @files = Dir.glob(root + "/data/*").map do |path|
     File.basename(path)
+  end
+end
+
+helpers do
+  def render_markdown(code)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    markdown.render(code)
   end
 end
 
@@ -32,6 +38,7 @@ get "/:filename" do
 
   if @files.include?(@filename)
     headers["Content-Type"] = "text/plain"
+    return render_markdown(File.read(file_path)) if File.extname(@filename) == ".md"
     File.read(file_path)
   else
     session[:error] = "#{@filename} does not exist"
