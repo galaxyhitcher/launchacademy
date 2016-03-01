@@ -27,3 +27,8 @@ Viewing Markdown Files
 1.) Rename about.txt to about.md Add some Markdown-formatted text to this file.
 2.) Create a helper method called render_markdown that takes a single argument, the text to be processed, and returns rendered HTML.
 3.) When a user is viewing a file with the extension md, render the file's content using RedCarpet and return the result as the response's body.
+
+Editing Document Content
+1.) Update views/index.erb to add edit links after each document name.
+2.) Create a new route for editing a document. Within this route, render a new view template that contains a form and a text area.
+3.) Create a new route for saving changes to the document. Within this route, update the contents of the appropriate document, add a message to the session, and redirect the user.

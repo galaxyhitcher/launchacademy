@@ -16,7 +16,7 @@ class CmsTest < Minitest::Test
     get "/"
     assert_equal 200, last_response.status
     assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
-    assert last_response.body.include?('about.txt')
+    assert last_response.body.include?('about.md')
     assert last_response.body.include?('changes.txt')
     assert last_response.body.include?('history.txt')
   end
@@ -34,5 +34,13 @@ class CmsTest < Minitest::Test
 
     assert_equal 200, last_response.status
     assert_includes last_response.body, "notafile.ext does not exist"
+  end
+
+  def test_viewing_markdown_document
+    get "/about.md"
+
+    assert_equal 200, last_response.status
+    assert_equal "text/plain", last_response["Content-Type"]
+    assert_includes last_response.body, "<h1>Check this out!</h1>"
   end
 end
