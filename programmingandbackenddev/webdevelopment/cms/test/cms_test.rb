@@ -43,4 +43,11 @@ class CmsTest < Minitest::Test
     assert_equal "text/plain", last_response["Content-Type"]
     assert_includes last_response.body, "<h1>Check this out!</h1>"
   end
+
+  def test_editing_document
+    get "/changes.txt/edit"
+    assert_equal 200, last_response.status
+    assert_includes last_response.body, "<textarea"
+    assert_includes last_response.body, %q(<button type="submit")
+  end
 end

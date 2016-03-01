@@ -46,3 +46,8 @@ get "/:filename" do
   end
 end
 
+get "/:filename/edit" do
+  @filename = params[:filename]
+  erb :edit
+end
+
