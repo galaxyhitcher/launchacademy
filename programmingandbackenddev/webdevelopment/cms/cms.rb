@@ -2,6 +2,7 @@ require "sinatra"
 require "sinatra/reloader"
 require "tilt/erubis"
 require "redcarpet"
+require "pry"
 
 configure do
   enable :sessions
@@ -65,6 +66,19 @@ get "/:filename/edit" do
   erb :edit
 end
 
+post "/new" do
+  binding.pry
+  if params[:content_name].empty?
+    session[:message] = "A name is required."
+    redirect "/"
+  end
+  file_path = File.join(data_path, params[:content_name])
+  File.write(file_path, params[:content])
+  session[:message] = "#{params[:content_name]} has been created."
+  redirect "/"
+
+end
+
 post "/:filename" do
   file_path = File.join(data_path, params[:filename])
 
@@ -73,4 +87,6 @@ post "/:filename" do
   session[:message] = "#{params[:filename]} has been updated."
   redirect "/"
 end
+
+
 

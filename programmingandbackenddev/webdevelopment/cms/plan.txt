@@ -42,3 +42,4 @@ project.
 
 Creating New Documents
 1.) Create link to add a new document on the index page.
+2.) Add a textarea and a submit button to the new page.
