@@ -32,3 +32,13 @@ Editing Document Content
 1.) Update views/index.erb to add edit links after each document name.
 2.) Create a new route for editing a document. Within this route, render a new view template that contains a form and a text area.
 3.) Create a new route for saving changes to the document. Within this route, update the contents of the appropriate document, add a message to the session, and redirect the user.
+Give us your feedback
+
+Adding Global Style and Behavior
+1.) Add the following CSS to a new file called cms.css in your 
+project.
+2.) Create a layout called layout.erb, and link to the cms.css file from it.
+3.) When viewing a text file, no surrounding HTML code should be sent in the response.
+
+Creating New Documents
+1.) Create link to add a new document on the index page.

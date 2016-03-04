@@ -1,50 +1,80 @@
+# test/cms_test.rb
 ENV["RACK_ENV"] = "test"
+
+require "fileutils"
 
 require "minitest/autorun"
 require "rack/test"
 
 require_relative "../cms"
 
-class CmsTest < Minitest::Test
+class CMSTest < Minitest::Test
   include Rack::Test::Methods
 
   def app
     Sinatra::Application
   end
 
-  def test_index
-    get "/"
-    assert_equal 200, last_response.status
-    assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
-    assert last_response.body.include?('about.md')
-    assert last_response.body.include?('changes.txt')
-    assert last_response.body.include?('history.txt')
+  def setup
+    FileUtils.mkdir_p(data_path)
   end
 
-  def test_changes
-    get "/about.md"
+  def teardown
+    FileUtils.rm_rf(data_path)
+  end
+
+  def create_document(name, content = "")
+    File.open(File.join(data_path, name), "w") do |file|
+      file.write(content)
+    end
+  end
+
+  def test_index
+    create_document "about.md"
+    create_document "changes.txt"
+
+    get "/"
+
     assert_equal 200, last_response.status
-    assert last_response.body.include?('info about the ruby language')
+    assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
+    assert_includes last_response.body, "about.md"
+    assert_includes last_response.body, "changes.txt"
+  end
+
+  def test_viewing_text_document
+    create_document "history.txt", "Ruby 0.95 released"
+
+    get "/history.txt"
+
+    assert_equal 200, last_response.status
+    assert_equal "text/plain", last_response["Content-Type"]
+    assert_includes last_response.body, "Ruby 0.95 released"
+  end
+
+  def test_viewing_markdown_document
+    create_document "about.md", "# Ruby is..."
+
+    get "/about.md"
+
+    assert_equal 200, last_response.status
+    assert_equal "text/html;charset=utf-8", last_response["Content-Type"]
+    assert_includes last_response.body, "<h1>Ruby is...</h1>"
   end
 
   def test_document_not_found
     get "/notafile.ext"
+
     assert_equal 302, last_response.status
+
     get last_response["Location"]
 
     assert_equal 200, last_response.status
     assert_includes last_response.body, "notafile.ext does not exist"
   end
 
-  def test_viewing_markdown_document
-    get "/about.md"
-
-    assert_equal 200, last_response.status
-    assert_equal "text/plain", last_response["Content-Type"]
-    assert_includes last_response.body, "<h1>Check this out!</h1>"
-  end
-
   def test_editing_document
+    create_document "changes.txt"
+
     get "/changes.txt/edit"
 
     assert_equal 200, last_response.status
