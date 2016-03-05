@@ -43,3 +43,7 @@ project.
 Creating New Documents
 1.) Create link to add a new document on the index page.
 2.) Add a textarea and a submit button to the new page.
+
+Deleting Documents
+1.) Add a link to delete each item on index.erb
+2.) add a route to post "/:filename/delete", redirect to "/" and flash a message "$FILENAME was deleted"
