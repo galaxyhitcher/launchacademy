@@ -66,15 +66,14 @@ get "/:filename/edit" do
   erb :edit
 end
 
-post "/new" do
-  binding.pry
-  if params[:content_name].empty?
-    session[:message] = "A name is required."
-    redirect "/"
+post "/create" do
+  if params[:filename].empty?
+    session[:message] = "A name is required"
+    halt 422, "A name is required"
   end
-  file_path = File.join(data_path, params[:content_name])
+  file_path = File.join(data_path, params[:filename])
   File.write(file_path, params[:content])
-  session[:message] = "#{params[:content_name]} has been created."
+  session[:message] = "#{params[:filename]} has been created"
   redirect "/"
 
 end
