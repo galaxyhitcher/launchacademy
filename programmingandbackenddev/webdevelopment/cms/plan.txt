@@ -49,13 +49,9 @@ Deleting Documents
 2.) add a route to post "/:filename/delete", redirect to "/" and flash a message "$FILENAME was deleted"
 
 Signing In And Out
-1.) Add a new route that will handle rendering the new document form.
-
-2.) Add a view template and render it within the route created in #1. This template should include a form for entering the new document's name.
-
-3.) Add a link to the new route within the index view template.
-
-4.) Add a new route that the form from #2 will submit to.
-
-5.) If a filename is provided by the user, create the document, store the appropriate message in the session, and redirect the user to the index page.
-If no filename provided by the user, render the new form and display an error message.
+1.) Create a route that renders a view template containing a sign in form.
+2.) Create a route that the form from #1 submits to.
+3.) If the credentials are correct, store the username and the success message in the session and redirect to the index page.
+4.) If the credentials are not correct, rerender the sign in form and display an error message.
+5.) Add some code to the index page to display a "Sign In" or "Sign Out" button and message based on whether the user is signed in.
+6.) Create a route that deletes the username from the session, adds a message to the session, and redirects the user to the index page. Point the "Sign Out" button created in #3 at this route.
