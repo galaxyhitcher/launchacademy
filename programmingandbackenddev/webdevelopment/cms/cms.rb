@@ -102,10 +102,10 @@ post "/:filename" do
 end
 
 get "/users/signin" do
-  erb :signin
+  erb :sign_in
 end
 
-post "/users/signin" do
+post "/users/sign_in" do
   if params[:username] == "admin" && params[:password] == "secret"
     session[:username] = params[:username]
     session[:message] = "Welcome!"
@@ -113,11 +113,11 @@ post "/users/signin" do
   else
     session[:message] = "Invalid credentials"
     status 422
-    erb :signin
+    erb :sign_in
   end
 end
 
-post "/users/signout" do
+post "/users/sign_out" do
   session.delete(:username)
   session[:message] = "You have been signed out."
   redirect "/"

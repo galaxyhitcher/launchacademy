@@ -55,3 +55,6 @@ Signing In And Out
 4.) If the credentials are not correct, rerender the sign in form and display an error message.
 5.) Add some code to the index page to display a "Sign In" or "Sign Out" button and message based on whether the user is signed in.
 6.) Create a route that deletes the username from the session, adds a message to the session, and redirects the user to the index page. Point the "Sign Out" button created in #3 at this route.
+
+Accessing the Session While Testing
+1.) Update all existing tests to use the above methods for verifying session values. This means that many tests will become shorter as assertions can be made directly about the session instead of the content of a response's body. Specifically, instead of loading a page using get and then checking to see if a given message is displayed on it, session[:message] can be used to access the session value directly.
