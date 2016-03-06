@@ -31,7 +31,17 @@ def load_file_content(path)
   when ".md"
     erb render_markdown(content)
   end
+end
 
+def user_signed_in?
+  session.key?(:username)
+end
+
+def require_signed_in_user
+  unless user_signed_in?
+    session[:message] = "You must be signed in to do that."
+    redirect "/"
+  end
 end
 
 get "/" do
@@ -44,11 +54,12 @@ get "/" do
 end
 
 get "/new" do
+  require_signed_in_user
+
   erb :new
 end
 
 get "/:filename" do
-  
   file_path = File.join(data_path, params[:filename])
 
   if File.exist?(file_path)
@@ -59,7 +70,28 @@ get "/:filename" do
   end
 end
 
+post "/create" do
+  require_signed_in_user
+
+  filename = params[:filename].to_s
+
+  if filename.size == 0
+    session[:message] = "A name is required."
+    status 422
+    erb :new
+  else
+    file_path = File.join(data_path, filename)
+
+    File.write(file_path, "")
+    session[:message] = "#{params[:filename]} has been created."
+
+    redirect "/"
+  end
+end
+
 get "/:filename/edit" do
+  require_signed_in_user
+
   file_path = File.join(data_path, params[:filename])
 
   @filename = params[:filename]
@@ -68,11 +100,20 @@ get "/:filename/edit" do
   erb :edit
 end
 
-get "/users/sign_in" do
-  erb :sign_in
+post "/:filename" do
+  require_signed_in_user
+
+  file_path = File.join(data_path, params[:filename])
+
+  File.write(file_path, params[:content])
+
+  session[:message] = "#{params[:filename]} has been updated."
+  redirect "/"
 end
 
 post "/:filename/delete" do
+  require_signed_in_user
+
   file_path = File.join(data_path, params[:filename])
 
   File.delete(file_path)
@@ -80,6 +121,11 @@ post "/:filename/delete" do
   session[:message] = "#{params[:filename]} has been deleted."
   redirect "/"
 end
+
+get "/users/sign_in" do
+  erb :sign_in
+end
+
 
 post "/create" do
   if params[:filename].empty?
@@ -91,15 +137,6 @@ post "/create" do
   session[:message] = "#{params[:filename]} has been created"
   redirect "/"
 
-end
-
-post "/:filename" do
-  file_path = File.join(data_path, params[:filename])
-
-  File.write(file_path, params[:content])
-
-  session[:message] = "#{params[:filename]} has been updated."
-  redirect "/"
 end
 
 get "/users/sign_in" do
