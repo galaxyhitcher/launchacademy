@@ -34,6 +34,7 @@ def load_file_content(path)
 end
 
 get "/" do
+  # binding.pry
   pattern = File.join(data_path, "*")
   @files = Dir.glob(pattern).map do |path|
     File.basename(path)
@@ -64,6 +65,10 @@ get "/:filename/edit" do
   @content = File.read(file_path)
 
   erb :edit
+end
+
+get "/users/sign_in" do
+  erb :sign_in
 end
 
 post "/:filename/delete" do
