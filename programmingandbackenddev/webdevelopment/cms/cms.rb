@@ -31,6 +31,7 @@ def load_file_content(path)
   when ".md"
     erb render_markdown(content)
   end
+
 end
 
 get "/" do
@@ -101,7 +102,7 @@ post "/:filename" do
   redirect "/"
 end
 
-get "/users/signin" do
+get "/users/sign_in" do
   erb :sign_in
 end
 

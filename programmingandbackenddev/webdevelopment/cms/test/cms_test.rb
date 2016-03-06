@@ -33,6 +33,11 @@ class CMSTest < Minitest::Test
     last_request.env["rack.session"]
   end
 
+
+  def user_signed_in?
+    !!(session[:username])
+  end
+
   def test_index
     create_document "about.md"
     create_document "changes.txt"
@@ -130,6 +135,7 @@ class CMSTest < Minitest::Test
   def test_signin
     post "/users/sign_in", username: "admin", password: "secret"
     assert_equal 302, last_response.status
+    assert_equal true, user_signed_in?
     assert_equal "Welcome!", session[:message]
     assert_equal "admin", session[:username]
 
