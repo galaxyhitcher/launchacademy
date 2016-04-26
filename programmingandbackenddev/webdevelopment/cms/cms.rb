@@ -2,11 +2,33 @@ require "sinatra"
 require "sinatra/reloader"
 require "tilt/erubis"
 require "redcarpet"
+require "yaml"
+require "bcrypt"
 require "pry"
 
 configure do
   enable :sessions
   set :session_secret, 'super secret'
+end
+
+def valid_credentials?(username, password)
+  credentials = load_user_credentials
+
+  if credentials.key?(username)
+    bcrypt_password = BCrypt::Password.new(credentials[username])
+    bcrypt_password == password
+  else
+    false
+  end
+end
+
+def load_user_credentials
+  credentials_path = if ENV["RACK_ENV"] == "test"
+    File.expand_path("../test/users.yml", __FILE__)
+  else
+    File.expand_path("../users.yml", __FILE__)
+  end
+  YAML.load_file(credentials_path)
 end
 
 def data_path
@@ -45,7 +67,6 @@ def require_signed_in_user
 end
 
 get "/" do
-  # binding.pry
   pattern = File.join(data_path, "*")
   @files = Dir.glob(pattern).map do |path|
     File.basename(path)
@@ -161,4 +182,30 @@ post "/users/sign_out" do
   redirect "/"
 end
 
+post "/users/sign_in" do
+  credentials = load_user_credentials
+  username = params[:username]
 
+  if credentials.key?(username) && credentials[username] == params[:password]
+    session[:username] = username
+    session[:message] = "Welcome!"
+    redirect "/"
+  else
+    session[:message] = "Invalid credentials"
+    status 422
+    erb :sign_in
+  end
+end
+post "/users/sign_in" do
+  username = params[:username]
+
+  if valid_credentials?(username, params[:password])
+    session[:username] = username
+    session[:message] = "Welcome!"
+    redirect "/"
+  else
+    session[:message] = "Invalid credentials"
+    status 422
+    erb :sign_in
+  end
+end
