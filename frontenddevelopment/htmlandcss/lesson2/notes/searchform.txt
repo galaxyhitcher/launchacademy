@@ -1,0 +1,27 @@
+create a search form w/ field element for search term & group of elements to select 'TV', 'Movies', or 'Music'
+
+have a form element inside a fieldset
+create a form without a definition list
+(label then input)
+
+label what we're looking for in the corresponding input
+input specifically for search (i.e. input type="search")
+
+slightly rounded corners in searchbar (Google Chrome)
+x control clears out the search field
+
+autocomplete
+
+javascript plugins website grunt
+
+user can clear a search input in one action
+
+we need radio elements - label with no for attribute, name="filter", value="tv"
+with a radio button, the user is toggling the input.
+
+add a button that does not submit the form we click
+- add an input with a type of button instead of submit
+
+you are going to attach a form processing behavior in javascript instead of sending the form to the server
+
+update on the page instead of reloading it.

@@ -1,0 +1,33 @@
+toggle enabled by default
+starting with a form - we have a fieldset to group all these fields together
+we have all these fields stacked top to bottom as <dt> tags
+this could be accomplished with a radio, but we will use a select instead
+for each name we will have an option, value="Looper"
+we can change what is displayed to the client while keeping the same value sent back to the server
+we have a select box - we can start typing F - this will go to the first option which starts with F
+- you cannot do this with radio buttons, so a select element is the right choice
+native form widget
+single line text fields
+email fields
+phone fields
+url field
+
+multi-line text fields
+select box
+select box where you can choose multiple items
+
+buttons
+
+advanced form widgets
+
+input with a type of range! - this is what we're looking for.
+increments by one.
+
+rating type="range", min="1", max="5"
+we do not have tick marks and the value that is currently being shown as default
+we will have a toggle for your favorites list
+the check box will wrap the input
+- put this in a div element
+- this also ensures the check box will get it's own row since it's inside a div element
+out of the three radio inputs, if we wanted the tv attribute selected by default, we would put the checked boolean attribute on this one.
+we have a checkbox checked by default

@@ -1,0 +1,39 @@
+make sure each field is required - go into forms guide on developer.mozilla.org
+most browsers that support the required attribute will not submit the form until all required fields are filled out
+required is a boolean attribute
+action - where the form submits to
+back end - receives this data
+method does not matter
+fieldset element - groups all fields together - have a definition list/ series of definition lists
+label is definition term, definition is input - makes a lot of sense semantically
+first input is user's name (assume full name)
+name will be a text field
+(input is a self-closing tag)
+email type gives the browser the option to display a different keyboard tailored to email input
+why both a name and an id attribute on these fields?
+
+the name attribute is used to pair up with the content entered into this field
+
+the browser defines the params in the url using the text inputted into the fields
+the next field is for the phone number
+type="tel" (tel is short for telephone)
+
+Finally, we have a message which will be represented by a textarea.
+
+since we want to be able to enter multiple lines of content, we will use a textarea
+optional attributes you probably want to set:
+
+rows="6"
+cols="80"
+(i.e. 80 characters wide and 6 characters tall)
+
+This will not be a self-closing element.
+most browsers will let you change the size of the textarea, however, the minimum size is defined by the rows and cols attributes.
+
+value attribute defines the default content of the field.
+reset triggers browser-specific behavior.
+
+if we had a value attribute, i.e. value="Shane", and we hit the reset, it would reset that field to "Shane"
+
+if the form action is empty, the submit input type will simply reset the page.
+
