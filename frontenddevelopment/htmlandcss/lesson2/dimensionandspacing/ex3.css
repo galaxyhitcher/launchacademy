@@ -1,0 +1,15 @@
+ul {
+  padding: 0;
+  list-style: none;
+  background: #a7ceff;
+}
+
+li {
+  display: inline-block;
+  width: 23%;
+  min-height: 120px;
+  margin: -10px 1%;
+  line-height: 120px;
+  text-align: center;
+  background: #ffffcc;
+}

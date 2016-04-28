@@ -1,0 +1,12 @@
+table {
+  background: #a7ceff;
+  border-spacing: 0;
+  width:100%;
+}
+
+td {
+  background: #ffffcc;
+  margin: 10px;
+  text-align: center;
+  width: 25%;
+}
