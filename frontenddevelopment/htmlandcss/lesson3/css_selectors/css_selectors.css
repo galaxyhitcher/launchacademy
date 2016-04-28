@@ -1,0 +1,78 @@
+form {
+  width: 450px;
+}
+label {
+  display: block;
+}
+
+p {
+  font-size: 18px;
+}
+
+li {
+  border-bottom: 1px solid #06c;
+}
+
+header li {
+  border-bottom: 0;
+}
+
+article p {
+  font-family: sans-serif;
+}
+
+.subheading {
+  background-color: #e0e0e0;
+}
+
+#intro {
+  font-size: 20px;
+}
+
+ul li {
+  border-style: dotted;
+}
+
+main li ~ li {
+  border-top: 1px solid #06c;
+}
+
+main ul li ~ li {
+  border-top-style: dotted;
+}
+
+h2 + p {
+  font-size: 20px;
+}
+
+header li:hover > ul {
+  display: block;
+}
+
+input[type="text"]:focus {
+  background: #fff9b5;
+}
+
+input[type="checkbox"]:checked + span {
+  font-weight: bold;
+}
+
+input {
+  border: 1px solid #999;
+}
+
+input[required] {
+  border: 1px solid #004f75;
+}
+
+main li:first-child {
+  text-indent: 15px;
+}
+
+tr:nth-of-type(odd) td {
+  background: #d4f7fb;
+}
+
+td:nth-of-type(3n) {
+  text-align: center;
+}
