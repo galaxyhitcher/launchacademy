@@ -1,0 +1,39 @@
+body { background: #cccccc; }
+
+section {
+	max-width: 1200px;
+  margin: 0 auto;
+	overflow: hidden;
+	box-sizing: border-box;
+  background: #cccccc;
+}
+
+section:after {
+	display: block;
+	clear: both;
+	content: "";
+}
+
+header {
+  float:left;
+	width: 15%;
+	background: blue;
+}
+
+article {
+  float: left;
+	width: 60%;
+  padding-right: 30px;
+  background: #ffffcc;
+}
+
+aside {
+  float: left;
+  width: 15%;
+  background-color: #ccffcc;
+}
+
+footer {
+	clear: both;
+	background:#ebecff;
+}

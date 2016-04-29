@@ -1,0 +1,30 @@
+#positioned {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  z-index: 2;
+  width: 400px;
+  padding: 30px 15px;
+  margin-left: -200px;
+  background: #ffc;
+  box-sizing: border-box;
+}
+
+#positioned span {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 20px;
+  height: 20px;
+  background: #fcfc99;
+}
+
+#fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+  background: rgba(0, 0, 0, .6);
+}
