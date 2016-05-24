@@ -73,12 +73,12 @@ img {
   margin: 0 auto;
 }
 
-input[type="checkbox"] { display: none; },
+input[type="checkbox"] { display: none; }
 input:checked + figure img {
   position: absolute;
-  top: 400px;
+  top: 100px;
   left: 50%;
-  width: 100px;
+  width: 400px;
   height: auto;
   margin: 0 0 0 -200px;
   z-index: 2;
