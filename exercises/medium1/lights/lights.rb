@@ -26,3 +26,8 @@ class Bank
     end
   end
 end
+
+bank = Bank.new(1000)
+
+puts "Number lit: #{bank.how_many_turned_on?}"
+puts "Lights turned on: #{bank.which_lights_turned_on?}"
