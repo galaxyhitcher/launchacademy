@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Layouts</title>
+  <link rel="stylesheet" href="page.css">
+</head>
+<body>
+  <form action="" method="post">
+    <dl>
+      <dt>
+        <label for="name">Your Name</label>
+      </dt>
+      <dd>
+        <input id="name" type="text" name="name">
+      </dd>
+    </dl>
+    <dl>
+      <dt>
+      <label for="address">Address</label>
+      </dt>
+      <dd>
+        <input id="address" type="text" name="address">
+      </dd>
+    </dl>
+    <dl class="city partial">
+      <dt>
+        <label for="city">City</label>
+      </dt>
+      <dd>
+        <input id="city" type="text" name="city">
+      </dd>
+    </dl><!--
+    --><dl class="state partial">
+      <dt>
+        <label for="state">State</label>
+      </dt>
+      <dd>
+        <select id="state" name="state">
+          <option>AK</option>
+          <option>AL</option>
+        </select>
+      </dd>
+    </dl><!--
+    --><dl class="zipcode partial">
+      <dt>
+        <label for="zipcode">Zipcode</label>
+      </dt>
+      <dd>
+        <input id="zipcode" type="text" name="zipcode">
+      </dd>
+    </dl>
+  </form>
+</body>
+</html>

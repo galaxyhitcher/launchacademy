@@ -1,0 +1,65 @@
+body {
+  font: normal 14px Helvetica, Arial, sans-serif;
+}
+
+dl {
+  margin: 0;
+  padding-bottom: 20px;
+}
+
+dt {
+  padding-bottom: 10px;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+
+dd {
+  padding-bottom: 20px;
+  margin: 0;
+}
+
+input[type="text"] {
+  width: 100%;
+  height: 40px;
+  padding: 0 8px;
+  font: normal 14px Helvetica, Arial, sans-serif;
+  border: 1px solid #cecece;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+select {
+  width: 100%;
+  height: 40px;
+  padding: 0 8px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: 1px solid #cecece;
+  background: white;
+  box-sizing: border-box;
+}
+
+
+input[type="text"] + input[type="text"] {
+  margin-top: 10px;
+}
+
+dl.partial {
+  display: inline-block;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+dl.city {
+  width: 50%;
+}
+
+dl.state {
+  width: 25%;
+}
+
+dl.zipcode {
+  width: 25%;
+  padding-right: 0;
+}
