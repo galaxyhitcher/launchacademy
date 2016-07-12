@@ -66,8 +66,12 @@ article {
   padding: 0 0 100px 0;
 }
 
+article p {
+  padding: 0 110px;
+}
+
 .column {
-  width: 800px;
+  width: 1000px;
   margin: auto;
 }
 
@@ -99,3 +103,11 @@ footer li a {
 footer li a.facebook { background-position: 0 -46px; }
 footer li a.email { background-position: 0 -92px; }
 footer li a.instagram { background-position: 0 100%; }
+
+#projects figure {
+  padding: 0 0 55px 0;
+}
+
+#projects figure img {
+  display: block;
+}
