@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Advanced Forms</title>
+  <link rel="stylesheet" href="whitespace-reset.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="column">
+    <form>
+      <h1>Create Your Profile</h1>
+      <section id="personal_info">
+        <h2>Personal Info</h2>
+        <dl>
+          <dt>
+            Your Name
+          </dt>
+          <dd>
+            <input type="text" name="first_name" id="first_name" placeholder="First">
+            <input type="text" name="last_name" id="last_name" placeholder="Last">
+          </dd>
+          <dt>
+            Email
+          </dt>
+          <dd>
+            <input type="email" name="email" id="email">
+          </dd>
+        </dl>
+      </section>
+      <section id="social_media_accounts">
+        <h2>Social Media Accounts</h2>
+        <dl class="clearfix">
+          <div class="facebook" class="third">
+            <dt>
+              Facebook
+            </dt>
+            <dd>
+              <input type="text" name="facebook" id="facebook">
+            </dd>
+          </div>
+          <div class="twitter" class="third">
+            <dt>
+              Twitter
+            </dt>
+            <dd>
+              <input type="text" name="twitter" id="facebook">
+            </dd>
+          </div>
+          <div class="linkedin" class="third">
+            <dt>
+              LinkedIn
+            </dt>
+            <dd>
+              <input type="text" name="linkedin" id="linkedin">
+            </dd>
+          </div>
+        </dl>
+      </section>
+      <section id="account_info" class="clearfix">
+        <h2>Account Info</h2>
+        <dl>
+          <div class="third">
+            <dt>
+              Profile Name
+            </dt>
+            <dd>
+              <input type="text" name="profile_name" id="profile_name">
+            </dd>
+          </div>
+          <div class="third">
+            <dt>
+              Password
+            </dt>
+            <dd>
+              <input type="text" name="password" id="password">
+            </dd>
+          </div>
+          <div class="third">
+            <dt>
+              Confirm Password
+            </dt>
+            <dd>
+              <input type="text" name="confirm_password" id="confirm_password">
+            </dt>
+          </div>
+        </dl>
+      </section>
+      <section id="bio">
+        <h2>Bio</h2>
+        <textarea>
+        </textarea>
+      </section>
+      <section>
+        <input type="checkbox">
+        <p>I agree to treat users with respect, and will not say anything at all if I have nothing nice to say.</p>
+        <button>Create account</button>
+      </section>
+  </div>
+</body>
+</html>
