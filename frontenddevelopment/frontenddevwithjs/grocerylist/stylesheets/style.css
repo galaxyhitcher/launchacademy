@@ -1,0 +1,66 @@
+body {
+  background-color: #5EE8CB;
+  padding: 50px 0 0 0;
+  font-family: Helvetica;
+  font-size: 24px;
+}
+
+div {
+  background-color: #ffffff;
+  width: 450px;
+  margin: auto;
+  padding: 40px 20px 40px 20px;
+  box-sizing: border-box;
+}
+
+h1 {
+  margin: 0 0 20px 0;
+}
+
+h2 {
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+
+h1, h2, li {
+  color: #378776;
+}
+
+input {
+  width: 100%;
+  height: 50px;
+  font-size: 25px;
+  padding: 0 5px;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+input:nth-of-type(2) {
+  width: 80px;
+  box-sizing: border-box;
+}
+
+button {
+  display: block;
+  width: 100%;
+  height: 55px;
+  font-size: 20px;
+  color: #ffffff;
+  background: -webkit-linear-gradient(#D11A00, #A11400);
+  background:    -moz-linear-gradient(#D11A00, #A11400);
+  background:         linear-gradient(#D11A00, #A11400);
+  border-radius: 12px;
+  border: 0;
+}
+
+#grocerylist {
+  text-align: center;
+  color: #A11400;
+  font-size: 32px;
+  margin-top: 46px;
+}
+
+li {
+  list-style-type: disc;
+  margin-left: 20px;
+}
