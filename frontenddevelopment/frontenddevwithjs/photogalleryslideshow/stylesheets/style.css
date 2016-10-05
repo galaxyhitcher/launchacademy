@@ -1,0 +1,54 @@
+body {
+  background-color: #FF9467;
+}
+.large_container img {
+  display: none;
+}
+
+.large_container img.active {
+  display: block;
+  position: absolute;
+  left: 50%;
+  margin: 50px 0 0 -275px;
+  border: 5px solid #ffffff;
+  box-sizing: border-box;
+}
+
+.thumbnails {
+  text-align: center;
+  clear: both;
+}
+
+.thumbnails img {
+  width: 100px;
+  margin: 0 20px;
+  position: relative;
+  top: 325px;
+}
+
+.thumbnails img.active {
+  box-sizing: border-box;
+  border: 1px solid blue;
+}
+
+a {
+  position: relative;
+  top: 340px;
+  font-family: 'Helvetica';
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: black;
+}
+
+nav {
+  text-align: center;
+}
+
+a#back {
+  right: 125px;
+}
+
+a#forward {
+  left: 125px;
+}

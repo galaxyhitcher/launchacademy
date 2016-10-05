@@ -1,0 +1,49 @@
+@import('whitespace-reset.css');
+
+html {
+  height: 100%;
+}
+body {
+  font-family: 'Helvetica';
+  clear: both;
+  margin: 0;
+  border: 15px solid #eee196;
+  height: 100%;
+}
+
+main {
+  float: right;
+  width: 80%;
+}
+
+aside {
+  float: left;
+  width: 20%;
+}
+
+aside input {
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+aside input:first-of-type {
+  margin-top: 75px;
+}
+
+h1 {
+  margin-left: 30px;
+}
+
+ul {
+  margin-right: 20px;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px 200px 10px 15px;;
+  border-top: 1px solid #c7c7c7;
+}
+
+li:first-of-type {
+  border-top: none;
+}
