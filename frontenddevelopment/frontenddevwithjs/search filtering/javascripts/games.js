@@ -1,4 +1,4 @@
-var favorites = [{
+var catalog = [{
   "title": "The Legend of Zelda: Majora's Mask 3D",
   "id": 1,
   "category": "Nintendo 3DS"
@@ -41,7 +41,21 @@ var favorites = [{
 }];
 
 $(function() {
-  favorites.forEach(function(game) {
-    $('<li>' + game.title + ' for ' + game.category + '</li>').appendTo('ul');
-  });
+  var $items = $("main li"),
+      $categories = $(":checkbox");
+
+  $categories.on("change", function() {
+    var $checkbox = $(this),
+        checked = $checkbox.is(":checked"),
+        category = $checkbox.attr('data-value'),
+        category_items;
+
+    category_items = catalog.filter(function(item) {
+      return item.category === category;
+    });
+
+    category_items.forEach(function(item) {
+      $items.filter("[data-id=" + item.id + "]").toggle(checked);
+    })
+  })
 });

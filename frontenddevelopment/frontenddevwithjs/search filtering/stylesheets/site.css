@@ -19,15 +19,12 @@ main {
 aside {
   float: left;
   width: 20%;
+  margin-top: 70px;
 }
 
 aside input {
   font-size: 20px;
   margin-left: 20px;
-}
-
-aside input:first-of-type {
-  margin-top: 75px;
 }
 
 h1 {
@@ -41,9 +38,13 @@ ul {
 li {
   list-style-type: none;
   padding: 10px 200px 10px 15px;;
-  border-top: 1px solid #c7c7c7;
+  border-bottom: 1px solid #c7c7c7;
 }
 
-li:first-of-type {
-  border-top: none;
+li:hover {
+  background-color: #3CFF6B;
+}
+
+ul li:last-of-type {
+  border-bottom: none;
 }
