@@ -29,7 +29,7 @@ $(function() {
     $e.animate({
       left: +data.x_end_coord,
       top: +data.y_end_coord,
-    }, 1000);
+    }, +data.duration);
   }
 
   function resetElement($e) {
