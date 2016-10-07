@@ -20,6 +20,23 @@ body {
   background: linear-gradient(to bottom, #ffffff 0%, #0066cc 100%);
 }
 
+#shape_container > div {
+  position: absolute;
+  z-index: 1;
+  width: 30px;
+  height: 30px;
+  background: #dde338;
+}
+
+#shape_container .circle {
+  border-radius: 100%;
+}
+
+#shape_container .star {
+  background: transparent url("../images/star.png");
+  background-size: 100% auto;
+}
+
 div#links {
   margin: 10px 0;
   font-size: 14px;
@@ -58,7 +75,7 @@ p {
   margin-bottom: 2px;
 }
 
-input[type="text"] {
+input[type="number"] {
   font-size: 14px;
   padding: 5px;
   width: 55px;
