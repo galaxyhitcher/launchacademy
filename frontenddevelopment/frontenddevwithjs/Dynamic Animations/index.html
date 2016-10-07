@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Dynamic Animations - Structure and Styles</title>
+  <link rel="stylesheet" href="stylesheets/site.css"></link>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="javascripts/animations.js"></script>
+</head>
+<body>
+  <div id="column">
+    <div id="shape_container"></div>
+    <form method="get" action="#">
+      <fieldset>
+        <div id="links"><a href="#">Start</a>|<a href="#">Stop</a></div>
+        <h1>Add a shape</h1>
+        <h2>Type</h2>
+        <ul>
+          <li>
+            <label>
+              <input type="radio" name="shape" value="square" />
+              Square
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="radio" name="shape" value="circle" />
+              Circle
+            </label>
+          </li>
+          <li>
+            <label>
+              <input type="radio" name="shape" value="star" />
+              Star
+            </label>
+          </li>
+        </ul>
+        <p>Starting Point</p>
+        <input type="text" name="x-start-coord" placeholder="x:" /><input type="text" name="y-start-coord" placeholder="y:" />
+        <p>Ending Point</p>
+        <input type="text" name="x-end-coord" placeholder="x:" /><input type="text" name="y-end-coord" placeholder="y:" />
+        <button type="submit">Add</button>
+      </fieldset>
+    </form>
+  </div>
+</body>
+</html>
