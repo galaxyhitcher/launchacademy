@@ -82,7 +82,8 @@ input[type="number"] {
   margin-right: 3px;
 }
 
-p:nth-of-type(2) {
+p:nth-of-type(2),
+p:last-of-type {
   margin-top: 20px;
 }
 
