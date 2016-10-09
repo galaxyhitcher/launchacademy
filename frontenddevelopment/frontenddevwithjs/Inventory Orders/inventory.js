@@ -10,9 +10,10 @@ var inventory;
     getCachedElement: function() {
       this.template = $("#inventory_item").remove().html();
     },
-    incrementedCount: 1,
+    incrementedCount: 0,
     addItem: function() {
       var that = this;
+      this.incrementedCount++;
       $("#inventory").append(that.template.replace(/ID/g, that.incrementedCount));
       this.collection.push({
         id: that.incrementedCount,
@@ -20,11 +21,10 @@ var inventory;
         stockNumber: "",
         quantity: 1,
       });
-      this.incrementedCount++;
     },
     deleteRowAt: function(i) {
-      this.collection.splice(i - 1, 1);
-      $('table tr').eq(i - 1).remove();
+      this.collection.splice(i, 1);
+      $('table tr').eq(i).remove();
     },
     init: function() {
       var that = this;
@@ -34,13 +34,10 @@ var inventory;
         that.addItem();
       });
 
-
       $("#inventory").on("click", "a", function() {
         var current_index = $(this).closest('tr').index() + 1;
         that.deleteRowAt(current_index);
-      })
-
-
+      });
     }
   };
 
