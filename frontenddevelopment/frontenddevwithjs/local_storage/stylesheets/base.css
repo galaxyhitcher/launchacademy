@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  width: 800px;
+  padding: 30px;
+  margin: 0 auto;
+  background: #ffffff;
+}
+
+nav ul li {
+  padding: 0;
+  list-style-type: none;
+}
+
+nav li {
+  display: inline;
+  padding: 0 3px 0 0;
+}
+
+nav a {
+  display: inline-block;
+  padding: 8px 15px;
+  color: #333333;
+  text-decoration: none;
+  background: #FFFFC0;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  box-shadow: -1px 0 3px rgba(0, 0, 0, .3);
+}
+
+nav a.active {
+  color: #b00b00;
+  background-color: #CBFFE3;
+}
+#tabs article ~ article {
+  display: none;
+}
+
+fieldset {
+  padding: 0;
+  border: none;
+}
