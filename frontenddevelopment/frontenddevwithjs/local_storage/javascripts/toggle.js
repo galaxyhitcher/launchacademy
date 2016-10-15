@@ -6,7 +6,7 @@ $(function() {
   }
 
   if (localStorage.backgroundColor) {
-    $('body, main').css({
+    $('body').css({
       'background-color': localStorage.backgroundColor,
     });
   }
@@ -17,11 +17,11 @@ $(function() {
 
   $('li').change(function() {
     var backgroundColor = $(this).find('input').val();
-    $('body, main').css({
+    $('body').css({
       'background-color': backgroundColor,
     });
     localStorage.setItem('backgroundColor', backgroundColor);
-  })
+  });
 
   $('a').click(function(e) {
     e.preventDefault();
