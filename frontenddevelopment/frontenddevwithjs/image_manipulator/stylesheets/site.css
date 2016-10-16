@@ -1,0 +1,28 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#wrap {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+#left_col {
+  float: left;
+  width: 50%;
+  height: 100%;
+  padding: 0 10% 0 5%;
+  box-sizing: border-box;
+}
+
+#right_col {
+  float: right;
+  width: 50%;
+  height: 100%;
+  padding: 0 10% 0 5%;
+  box-sizing: border-box;
+}
