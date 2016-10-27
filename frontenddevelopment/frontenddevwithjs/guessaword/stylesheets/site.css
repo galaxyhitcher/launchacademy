@@ -94,3 +94,11 @@ h2 {
   margin: 0;
   vertical-align: middle;
 }
+
+a {
+  text-decoration: none;
+  display: block;
+  color: blue;
+  font-size: 25px;
+  margin-bottom: 30px;
+}

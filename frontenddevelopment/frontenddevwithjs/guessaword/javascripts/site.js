@@ -1,4 +1,4 @@
-// TODO: refactor gameWon condition
+// TODO: refactor gameWon, removeApple
 function lowercaseWord(word) {
   return word[0].toLowerCase() + word.slice(1);
 };
@@ -22,28 +22,43 @@ var guessWord = {
     this.currentWord = picked === undefined ? "Sorry, I've run out of words!" : picked;
   },
   gameWon: function() {
-
-    console.log(this.currentWord);
-    console.log(this.lettersGuessed);
-    // current = this.currentWord;
-    // guessed = this.lettersGuessed;
-    // return false;
     var that = this;
     return this.currentWord.split('').every(function(letter) { 
       return that.lettersGuessed.includes(letter); 
     });
-    // return current.split('').every(function(letter) {
-    //   return guessed.includes(letter);
-    // });
   },
   unbindKeys: function() {
     $(document).unbind('keypress');
+  },
+  displayWinMessage: function() {
+    $("<h1>You won!</h1>").insertAfter("#tree")
+  },
+  displayNewGameLink: function() {
+    $("<a href='#'>Start New Game</a>").insertAfter("#tree");
+    this.bindNewGameLink();
+  },
+  teardown: function() {
+    $("#spaces span").remove();
+    $("#guesses span").remove();
+    $("body").removeClass("win lose");
+    $("a, h1").remove();
+    $("#apples").removeClass().addClass("guess");
+  },
+  startNewGame: function(e) {
+    e.preventDefault();
+    this.teardown();
+    this.init();
   },
   checkForWin: function() {
     if (this.gameWon()) {
       $('body').toggleClass('win');
       this.unbindKeys();
+      this.displayNewGameLink();
+      this.displayWinMessage();
     }
+  },
+  displayLoseMessage: function() {
+    $("<h1>Try again, the word was " + this.currentWord + ".</h1>").insertAfter("#tree");
   },
   removeApple: function() {
     var that = this;
@@ -52,6 +67,8 @@ var guessWord = {
     if (this.incorrectGuesses === this.wrongGuesses) {
       $('body').toggleClass('lose');
       this.unbindKeys();
+      this.displayNewGameLink();
+      this.displayLoseMessage();
     }
   },
   process: function(guess) {
@@ -72,10 +89,7 @@ var guessWord = {
         this.removeApple();
       }
     }
-
-    if (!this.lettersGuessed.includes(guess)) {
-      $('<span />').html(guess).appendTo($('#guesses'));
-    }
+    $('<span />').html(guess).appendTo($('#guesses'));
   },
   processTypedLetter: function(e) {
     var keyCode = e.keyCode;
@@ -91,6 +105,9 @@ var guessWord = {
   },
   bind: function() {
     $(document).on('keypress', $.proxy(this.processTypedLetter, this));
+  },
+  bindNewGameLink: function() {
+    $("a").on('click', $.proxy(this.startNewGame, this));
   },
   init: function() {
     this.setCurrentWord();
