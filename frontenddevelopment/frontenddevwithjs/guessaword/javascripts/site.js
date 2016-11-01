@@ -1,9 +1,7 @@
-// TODO: refactor gameWon, removeApple
-function lowercaseWord(word) {
-  return word[0].toLowerCase() + word.slice(1);
-};
+// TODO: fix event binding
 
-var guessWord = {
+
+var Game = {
   weird: ["Erinaceous", "Lamprophony", "Depone",
    "Finnimbrun", "floccinaucinihilipilification",
    "Inaniloquent", "Limerance",
@@ -11,24 +9,34 @@ var guessWord = {
    "Nudiustertian", "Phenakism", "Pronk",
    "Pulveratricious", "Rastaquouere",
    "Scopperloit", "Selcouth", "Tyrotoxism",
-   "Widdiful", "Zabernism"].map(lowercaseWord),
+   "Widdiful", "Zabernism"].map(function(word) { return word[0].toLowerCase() + word.slice(1); }),
   randomWord: function() {
     var sampled = _(this.weird).sample();
     this.weird.splice(this.weird.indexOf(sampled), 1);
     return sampled;
   },
+  showNoMoreWords: function() {
+    this.unbindKeys();
+    this.currentWord = "";
+    $("#spaces, #guesses").remove();
+    $("#apples").removeClass().addClass("guess_6");
+    $("<h1>You used up all the words</h1>").insertAfter("#tree");
+  },
   setCurrentWord: function() {
     var picked = this.randomWord();
-    this.currentWord = picked === undefined ? "Sorry, I've run out of words!" : picked;
+    if (picked === undefined) {
+      this.showNoMoreWords();
+    } else {
+      this.currentWord = picked;
+    }
   },
   gameWon: function() {
-    var that = this;
     return this.currentWord.split('').every(function(letter) { 
-      return that.lettersGuessed.includes(letter); 
-    });
+      return this.lettersGuessed.includes(letter); 
+    }, this);
   },
   unbindKeys: function() {
-    $(document).unbind('keypress');
+    $(document).off('keypress');
   },
   displayWinMessage: function() {
     $("<h1>You won!</h1>").insertAfter("#tree")
@@ -37,16 +45,8 @@ var guessWord = {
     $("<a href='#'>Start New Game</a>").insertAfter("#tree");
     this.bindNewGameLink();
   },
-  teardown: function() {
-    $("#spaces span").remove();
-    $("#guesses span").remove();
-    $("body").removeClass("win lose");
-    $("a, h1").remove();
-    $("#apples").removeClass().addClass("guess");
-  },
   startNewGame: function(e) {
     e.preventDefault();
-    this.teardown();
     this.init();
   },
   checkForWin: function() {
@@ -61,15 +61,19 @@ var guessWord = {
     $("<h1>Try again, the word was " + this.currentWord + ".</h1>").insertAfter("#tree");
   },
   removeApple: function() {
-    var that = this;
-    $('#apples').removeClass();
-    $('#apples').addClass('guess_' + String(that.incorrectGuesses));
-    if (this.incorrectGuesses === this.wrongGuesses) {
-      $('body').toggleClass('lose');
-      this.unbindKeys();
-      this.displayNewGameLink();
-      this.displayLoseMessage();
+    if (this.currentWord !== '') {
+      $('#apples').removeClass();
+      $('#apples').addClass('guess_' + String(this.incorrectGuesses));
+      if (this.incorrectGuesses === this.wrongGuesses) {
+        $('body').toggleClass('lose');
+        this.unbindKeys();
+        this.displayNewGameLink();
+        this.displayLoseMessage();
+      }
     }
+  },
+  updateGuessDisplay: function(guess) {
+    $('<span />').html(guess).appendTo($('#guesses'));
   },
   process: function(guess) {
     if (!this.lettersGuessed.includes(guess)) {
@@ -88,8 +92,13 @@ var guessWord = {
         this.incorrectGuesses += 1;
         this.removeApple();
       }
+
+      this.updateGuessDisplay(guess);
     }
-    $('<span />').html(guess).appendTo($('#guesses'));
+
+    if (!this.lettersGuessed.includes(guess)) {
+      this.lettersGuessed.push(guess);
+    }
   },
   processTypedLetter: function(e) {
     var keyCode = e.keyCode;
@@ -110,6 +119,11 @@ var guessWord = {
     $("a").on('click', $.proxy(this.startNewGame, this));
   },
   init: function() {
+    $("#spaces span").remove();
+    $("#guesses span").remove();
+    $("body").removeClass("win lose");
+    $("a, h1").remove();
+    $("#apples").removeClass().addClass("guess");
     this.setCurrentWord();
     this.incorrectGuesses = 0;
     this.lettersGuessed = [];
@@ -121,5 +135,5 @@ var guessWord = {
 };
 
 $(function() {
-  var game = Object.create(guessWord).init();
+  var game = Object.create(Game).init();
 });
